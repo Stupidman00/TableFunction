@@ -1,6 +1,6 @@
 import javafx.util.Pair;
 
-import java.util.Set;
+import java.util.Map;
 
 /**
  * Created by StupidMan00 on 10.02.2017.
@@ -8,7 +8,7 @@ import java.util.Set;
 public interface TableFunction {
     void add(double x, double y);
     void remove(double x, double y);
-    Set<Pair<Double, Double>> getTable();
+    Map<Double, Double> getTable();
     Pair<Double, Double> getValue(double x);
     double interpolate(double x);
 }
