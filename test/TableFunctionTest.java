@@ -1,18 +1,13 @@
+import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Admin on 11.02.2017.
  */
 public class TableFunctionTest {
+    // TODO Необходимо ли тестировать методы add, remove, getTable?
     @Test
-    public void getTable() throws Exception {
-
-    }
-
-    @Test
-    public void getValue() throws Exception {
+    public void findNearestPoint() throws Exception {
 
     }
 
