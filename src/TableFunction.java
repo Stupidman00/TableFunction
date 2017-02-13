@@ -7,7 +7,7 @@ import java.util.Map;
  */
 public interface TableFunction {
     void add(double x, double y);
-    void remove(double x, double y) throws Exception;
+    void remove(double x) throws Exception;
     Map<Double, Double> getTable();
     Pair<Double, Double> findNearestPoint(double x) throws Exception;
     double interpolate(double x) throws Exception;

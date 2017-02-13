@@ -19,8 +19,8 @@ public class TableFunctionImpl implements TableFunction {
     }
 
     @Override
-    public void remove(double x, double y) {
-        values.remove(x, y);
+    public void remove(double x) {
+        values.remove(x);
     }
 
     @Override
