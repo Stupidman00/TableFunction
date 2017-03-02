@@ -1,12 +1,10 @@
-package tableFunction;
+package table_function;
 
 import javafx.util.Pair;
-import java.util.Map;
+import table_function.interpolation_strategy.InterpolationStrategy;
+import table_function.interpolation_strategy.LinearInterpolation;
 
-/**
- * <p>An enumeration type to represent the types of interpolation.</p>
- */
-enum Interpolation { LINEAR, NEAREST_NEIGHBOUR }
+import java.util.Map;
 
 /**
  * <p> Interface for a tabular representation of the function. </p>
@@ -61,7 +59,7 @@ public interface TableFunction {
      * @return pair of argument-value nearest to the given argument.
      */
     Pair<Double, Double> findNearestPoint(double x)
-            throws EmptyTableException, IllegalArgumentException;
+            throws EmptyTableException;
 
     /**
      * <p>Defines the value of the function on argument
@@ -73,9 +71,9 @@ public interface TableFunction {
      * @return value of the function.
      */
     default double interpolate(double x)
-            throws IllegalArgumentException, EmptyTableException
+            throws EmptyTableException
     {
-        return interpolate(x, Interpolation.LINEAR);
+        return interpolate(x, new LinearInterpolation());
     }
 
     /**
@@ -83,11 +81,11 @@ public interface TableFunction {
      * of the domain of a function.</p>
      *
      * @param x argument value.
-     * @param type method of interpolation.
+     * @param strategy method of interpolation.
      * @return value of the function.
      */
-    double interpolate(double x, Interpolation type)
-            throws IllegalArgumentException, EmptyTableException;
+    double interpolate(double x, InterpolationStrategy strategy)
+            throws EmptyTableException;
 
     /**
      * <p>Defines belongs the argument <tt>x</tt> to the domain of function.</p>
@@ -97,4 +95,9 @@ public interface TableFunction {
      *          and <tt>false</tt> if not.
      */
     boolean isInRange(double x);
+
+    /**
+     * <p>Removes all pairs argument-value from table.</p>
+     */
+    void clear();
 }

@@ -1,6 +1,8 @@
-package tableFunction;
+package table_function;
 
 import javafx.util.Pair;
+import table_function.interpolation_strategy.InterpolationStrategy;
+
 import java.util.*;
 
 //TODO documentation to this class
@@ -33,9 +35,10 @@ public class TableFunctionImpl implements TableFunction {
 
     @Override
     public Pair<Double, Double> findNearestPoint(double x)
-            throws EmptyTableException, IllegalArgumentException
+            throws EmptyTableException
     {
         if (table.isEmpty()) throw new EmptyTableException();
+        if (table.containsKey(x)) return new Pair<>(x, table.get(x));
         double prevKey = table.headMap(x).lastKey();
         double nextKey = table.tailMap(x).firstKey();
         if (x - prevKey >= nextKey - x) {
@@ -46,16 +49,21 @@ public class TableFunctionImpl implements TableFunction {
     }
 
     @Override
-    public double interpolate(double x, Interpolation type)
-            throws IllegalArgumentException, EmptyTableException {
+    public double interpolate(double x, InterpolationStrategy strategy)
+            throws EmptyTableException
+    {
         if (!isInRange(x)) throw new IllegalArgumentException();
-        InterpolationStrategy strategy = InterpolationStrategy.chooseStrategy(type);
         return strategy.interpolate(x, this);
     }
 
     @Override
     public boolean isInRange(double x) {
         return x >= table.firstKey() && x <= table.lastKey();
+    }
+
+    @Override
+    public void clear() {
+        table.clear();
     }
 
     @Override
@@ -75,8 +83,8 @@ public class TableFunctionImpl implements TableFunction {
 
     @Override
     public String toString() {
-        return "tableFunction.TableFunctionImpl{" +
-                "table=" + table +
+        return "TableFunction{" +
+                "table = " + table +
                 '}';
     }
 }

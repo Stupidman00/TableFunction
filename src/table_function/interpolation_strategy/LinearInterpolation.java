@@ -1,11 +1,12 @@
-package tableFunction;
+package table_function.interpolation_strategy;
 
 import javafx.util.Pair;
+import table_function.TableFunction;
 
 /**
  * <p> This class implements the linear interpolation method. </p>
  */
-class LinearInterpolation implements InterpolationStrategy {
+public class LinearInterpolation implements InterpolationStrategy {
     /**
      * <p> Defines the value of the function on argument
      * of the domain of function. Uses the linear interpolation
@@ -16,9 +17,9 @@ class LinearInterpolation implements InterpolationStrategy {
      * @return the value of function.
      */
     @Override
-    public double interpolate(double x, TableFunction table)
-            throws IllegalArgumentException {
+    public double interpolate(double x, TableFunction table) {
         if (!table.isInRange(x)) throw new IllegalArgumentException();
+        if (table.getTable().containsKey(x)) return table.getTable().get(x);
         Pair<Double, Double> prev = new Pair<>(0.0, 0.0);
         Pair<Double, Double> next = new Pair<>(0.0, 0.0);
         double distancePrev = -1.0;

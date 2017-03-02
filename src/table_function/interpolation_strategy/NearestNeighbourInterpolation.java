@@ -1,9 +1,11 @@
-package tableFunction;
+package table_function.interpolation_strategy;
+
+import table_function.TableFunction;
 
 /**
  * <p> This class implements the interpolation method to nearest neighbor. </p>
  */
-class NearestNeighbourInterpolation implements InterpolationStrategy {
+public class NearestNeighbourInterpolation implements InterpolationStrategy {
     /**
      * <p> Defines the value of the function on argument
      * of the domain of function. Uses the interpolation
@@ -15,7 +17,7 @@ class NearestNeighbourInterpolation implements InterpolationStrategy {
      */
     @Override
     public double interpolate(double x, TableFunction table)
-            throws TableFunction.EmptyTableException, IllegalArgumentException
+            throws TableFunction.EmptyTableException
     {
         return table.findNearestPoint(x).getValue();
     }
