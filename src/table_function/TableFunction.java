@@ -1,10 +1,9 @@
 package table_function;
 
-import javafx.util.Pair;
 import table_function.interpolation_strategy.InterpolationStrategy;
 import table_function.interpolation_strategy.LinearInterpolation;
 
-import java.util.Map;
+import java.util.NavigableMap;
 
 /**
  * <p> Interface for a tabular representation of the function. </p>
@@ -49,7 +48,7 @@ public interface TableFunction {
      *
      * @return map of pairs argument-value.
      */
-    Map<Double, Double> getTable();
+    NavigableMap<Double, Double> getTable();
 
     /**
      * <p>Looking for a pair of argument-value defined
@@ -58,7 +57,7 @@ public interface TableFunction {
      * @param x argument value for searching.
      * @return pair of argument-value nearest to the given argument.
      */
-    Pair<Double, Double> findNearestPoint(double x)
+    Point findNearestPoint(double x)
             throws EmptyTableException;
 
     /**

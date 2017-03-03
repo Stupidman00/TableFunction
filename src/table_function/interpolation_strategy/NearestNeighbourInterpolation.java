@@ -19,6 +19,6 @@ public class NearestNeighbourInterpolation implements InterpolationStrategy {
     public double interpolate(double x, TableFunction table)
             throws TableFunction.EmptyTableException
     {
-        return table.findNearestPoint(x).getValue();
+        return table.findNearestPoint(x).getY();
     }
 }

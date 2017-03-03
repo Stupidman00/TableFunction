@@ -1,13 +1,12 @@
 package table_function;
 
-import javafx.util.Pair;
 import table_function.interpolation_strategy.InterpolationStrategy;
 
 import java.util.*;
 
 //TODO documentation to this class
 public class TableFunctionImpl implements TableFunction {
-    private final SortedMap<Double, Double> table;
+    private final NavigableMap<Double, Double> table;
 
     TableFunctionImpl() {
         table = new TreeMap<>();
@@ -29,22 +28,21 @@ public class TableFunctionImpl implements TableFunction {
     }
 
     @Override
-    public Map<Double, Double> getTable() {
-        return Collections.unmodifiableSortedMap(table);
+    public NavigableMap<Double, Double> getTable() {
+        return Collections.unmodifiableNavigableMap(table);
     }
 
     @Override
-    public Pair<Double, Double> findNearestPoint(double x)
+    public Point findNearestPoint(double x)
             throws EmptyTableException
     {
         if (table.isEmpty()) throw new EmptyTableException();
-        if (table.containsKey(x)) return new Pair<>(x, table.get(x));
-        double prevKey = table.headMap(x).lastKey();
-        double nextKey = table.tailMap(x).firstKey();
+        double prevKey = table.floorKey(x);
+        double nextKey = table.ceilingKey(x);
         if (x - prevKey >= nextKey - x) {
-            return new Pair<>(nextKey, table.get(nextKey));
+            return new Point(nextKey, table.get(nextKey));
         } else {
-            return new Pair<>(prevKey, table.get(prevKey));
+            return new Point(prevKey, table.get(prevKey));
         }
     }
 

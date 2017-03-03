@@ -1,6 +1,5 @@
 package table_function;
 
-import javafx.util.Pair;
 import org.junit.Test;
 import table_function.interpolation_strategy.NearestNeighbourInterpolation;
 
@@ -14,10 +13,12 @@ public class TableFunctionImplTest {
             table.add(i, i * i);
         }
         table.remove(3);
-        assertEquals(new Pair<>(-4.0, 16.0), table.findNearestPoint(-3.9));
-        assertEquals(new Pair<>(0.0, 0.0), table.findNearestPoint(-0.25));
-        assertEquals(new Pair<>(1.0, 1.0), table.findNearestPoint(0.5));
-        assertEquals(new Pair<>(4.0, 16.0), table.findNearestPoint(3));
+        assertEquals(new Point(-4.0, 16.0), table.findNearestPoint(-3.9));
+        assertEquals(new Point(0.0, 0.0), table.findNearestPoint(-0.25));
+        assertEquals(new Point(1.0, 1.0), table.findNearestPoint(0.5));
+        assertEquals(new Point(4.0, 16.0), table.findNearestPoint(3));
+        assertEquals(new Point(4,16), table.findNearestPoint(4));
+        assertEquals(new Point(1,1), table.findNearestPoint(1));
     }
 
     @Test
