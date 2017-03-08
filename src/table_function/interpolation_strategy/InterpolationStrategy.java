@@ -13,8 +13,8 @@ public interface InterpolationStrategy {
      * of the domain of function.</p>
      *
      * @param x the argument.
-     * @param table interpolated function in table view.
-     * @return the value of function.
+     * @param table the interpolated function in table view.
+     * @return a value of function.
      * @throws EmptyTableException if table is empty.
      * @throws IllegalArgumentException if argument out of the domain of function.
      */

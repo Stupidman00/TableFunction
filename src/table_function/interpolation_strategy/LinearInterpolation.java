@@ -6,15 +6,15 @@ import table_function.TableFunction;
 /**
  * <p> This class implements the linear interpolation method. </p>
  */
-public class LinearInterpolation implements InterpolationStrategy {
+public final class LinearInterpolation implements InterpolationStrategy {
     /**
      * <p> Defines the value of the function on argument
      * of the domain of function. Uses the linear interpolation
      * method.</p>
      *
      * @param x the argument.
-     * @param table interpolated function in table view.
-     * @return the value of function.
+     * @param table the interpolated function in table view.
+     * @return a value of function.
      */
     @Override
     public double interpolate(double x, TableFunction table) {
