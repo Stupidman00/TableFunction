@@ -6,6 +6,7 @@ import table_function.TableFunction.*;
 /**
  * <p>This interface using for representation of interpolation algorithms. </p>
  */
+@FunctionalInterface
 public interface InterpolationStrategy {
 
     /**
